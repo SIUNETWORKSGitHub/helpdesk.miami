@@ -1,47 +1,100 @@
-# Introduction to GitHub
+# HelpDesk.Miami Portal
 
-_Get started using GitHub in less than an hour._
+A full-stack educational portal for IT Support training (A - Z), built with Next.js (App Router), React, and Tailwind CSS.
 
-## Welcome
+## Features
 
-People use GitHub to build some of the most advanced technologies in the world. Whether you’re visualizing data or building a new game, there’s a whole community and set of tools on GitHub that can help you do it even better. GitHub Skills’ “Introduction to GitHub” exercise guides you through everything you need to start contributing in less than an hour.
+- Modern responsive UI with navigation, hero banner, and interactive search/filtering
+- Categorized video and PDF galleries for:
+  - Tier 1 Fundamentals
+  - Networking
+  - Systems Administration
+  - Security
+- Integrated **Siucloud AI Advisor** widget for customized learning path recommendations
+- Member dashboard to:
+  - Track completed guides
+  - View AI-recommended next steps
+  - Filter resources by category
+- API routes for AI recommendations and gallery resource delivery
 
-- **Who is this for**: New developers, new GitHub users, and students.
-- **What you'll learn**: We'll introduce repositories, branches, commits, and pull requests.
-- **What you'll build**: We'll make a short Markdown file you can use as your [profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
-- **Prerequisites**: None. This exercise is a great introduction for your first day on GitHub.
-- **How long**: This exercise takes less than one hour to complete.
+## Quick Start
 
-In this exercise, you will:
+### 1) Install dependencies
 
-1. Create a branch
-2. Commit a file
-3. Open a pull request
-4. Merge your pull request
+```bash
+npm install
+```
 
-### How to start this exercise
+### 2) Run locally
 
-Simply copy the exercise to your account, then give your favorite Octocat (Mona) **about 20 seconds** to prepare the first lesson, then **refresh the page**.
+```bash
+npm run dev
+```
 
-[![](https://img.shields.io/badge/Copy%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/new?template_owner=skills&template_name=introduction-to-github&owner=%40me&name=skills-introduction-to-github&description=Exercise:+Introduction+to+GitHub&visibility=public)
+Open: `http://localhost:3000`
 
-<details>
-<summary>Having trouble? 🤷</summary><br/>
+### 3) Production build
 
-When copying the exercise, we recommend the following settings:
+```bash
+npm run build
+npm run start
+```
 
-- For owner, choose your personal account or an organization to host the repository.
+## Siucloud AI Agent Endpoint Configuration
 
-- We recommend creating a public repository, since private repositories will use Actions minutes.
+By default, the portal uses an internal fallback recommendation engine.
 
-If the exercise isn't ready in 20 seconds, please check the [Actions](../../actions) tab.
+To connect your own Copilot/AI endpoint, set:
 
-- Check to see if a job is running. Sometimes it simply takes a bit longer.
+```bash
+SIUCLOUD_AI_ENDPOINT="https://your-ai-endpoint.example.com/recommend"
+```
 
-- If the page shows a failed job, please submit an issue. Nice, you found a bug! 🐛
+You can place this in `.env.local`.
 
-</details>
+Expected request payload:
 
----
+```json
+{
+  "goals": "I want to become a network specialist",
+  "knowledge": "Tier 1 support and basic TCP/IP",
+  "role": "Helpdesk Technician"
+}
+```
 
-&copy; 2026 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+Expected response payload:
+
+```json
+{
+  "track": "Network Support Specialist",
+  "summary": "...",
+  "nextSteps": ["...", "..."]
+}
+```
+
+## Adding New Media Resources
+
+Update `/home/runner/work/helpdesk.miami/helpdesk.miami/lib/data.ts` and append entries to `mediaLibrary`:
+
+```ts
+{
+  id: "unique-id",
+  title: "Resource Title",
+  category: "Networking", // Tier 1 Fundamentals | Networking | Systems Administration | Security
+  type: "video", // or "pdf"
+  url: "https://...",
+  description: "Short summary"
+}
+```
+
+Guidelines:
+- Use embeddable URLs for `video` entries
+- Use direct-download/public URLs for `pdf` entries
+- Keep `id` values unique
+
+## Scripts
+
+- `npm run dev` – start local dev server
+- `npm run build` – create production build
+- `npm run start` – run production server
+- `npm run lint` – run ESLint checks
