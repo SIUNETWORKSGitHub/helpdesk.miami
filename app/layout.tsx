@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "HelpDesk.Miami Portal",
-  description: "IT Support training portal with media galleries and Siucloud AI guidance.",
+  title: "HelpDesk.Miami SMB Portal",
+  description: "SMB learning hub with interactive media viewers, role-based tracks, and Siucloud AI guidance.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

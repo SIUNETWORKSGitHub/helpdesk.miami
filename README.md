@@ -1,20 +1,23 @@
 # HelpDesk.Miami Portal
 
-A full-stack educational portal for IT Support training (A - Z), built with Next.js (App Router), React, and Tailwind CSS.
+A full-stack SMB-focused educational portal for IT support and internal operations training, built with Next.js (App Router), React, and Tailwind CSS.
 
 ## Features
 
-- Modern responsive UI with navigation, hero banner, and interactive search/filtering
-- Categorized video and PDF galleries for:
-  - Tier 1 Fundamentals
-  - Networking
-  - Systems Administration
-  - Security
-- Integrated **Siucloud AI Advisor** widget for customized learning path recommendations
-- Member dashboard to:
-  - Track completed guides
-  - View AI-recommended next steps
-  - Filter resources by category
+- SMB-tailored landing page with clear training tracks for:
+  - Onboarding
+  - Cybersecurity Awareness
+  - Cloud/SaaS Tools
+  - Troubleshooting
+- Interactive media hub with:
+  - Embedded video lesson modal with chapter markers
+  - Built-in PDF viewer modal with full-screen and download options
+  - Instant filtering by role, skill level, duration, and document type
+- Highlighted **Siucloud AI Advisor** widget for customized learning path recommendations
+- SMB dashboard to:
+  - Track completed resources
+  - View learning map states (Completed, In Progress, Recommended Next Step)
+  - See AI-recommended next steps
 - API routes for AI recommendations and gallery resource delivery
 
 ## Quick Start
@@ -80,10 +83,14 @@ Update `/home/runner/work/helpdesk.miami/helpdesk.miami/lib/data.ts` and append 
 {
   id: "unique-id",
   title: "Resource Title",
-  category: "Networking", // Tier 1 Fundamentals | Networking | Systems Administration | Security
+  category: "Cloud & SaaS Tools", // SMB Onboarding | Cybersecurity Awareness | Cloud & SaaS Tools | Troubleshooting
   type: "video", // or "pdf"
   url: "https://...",
-  description: "Short summary"
+  description: "Short summary",
+  role: "IT Support", // SMB Employee | IT Support | IT Manager | Security Champion
+  skillLevel: "Intermediate", // Beginner | Intermediate | Advanced
+  durationMinutes: 12,
+  documentType: "Lesson" // Lesson | Checklist | Guide | Runbook | Policy
 }
 ```
 
