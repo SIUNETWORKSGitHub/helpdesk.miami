@@ -44,14 +44,16 @@ export function SiucloudAdvisor() {
   return (
     <section className="rounded-2xl border border-blue-200 bg-blue-50 p-5 shadow-sm">
       <h2 className="text-xl font-bold text-slate-900">Siucloud AI Advisor</h2>
-      <p className="mt-1 text-sm text-slate-700">Describe your goals to receive an A - Z learning path recommendation.</p>
+      <p className="mt-1 text-sm text-slate-700">
+        Tell us your SMB role, current skills, and compliance priorities to receive a tailored learning path.
+      </p>
 
       <form onSubmit={onSubmit} className="mt-4 grid gap-3">
         <input
           required
           value={form.goals}
           onChange={(event) => setForm((prev) => ({ ...prev, goals: event.target.value }))}
-          placeholder="Training goals"
+          placeholder="Training goals (ex: improve cybersecurity readiness)"
           className="rounded-lg border border-blue-200 px-3 py-2 text-sm bg-white"
         />
         <input
@@ -65,7 +67,7 @@ export function SiucloudAdvisor() {
           required
           value={form.role}
           onChange={(event) => setForm((prev) => ({ ...prev, role: event.target.value }))}
-          placeholder="Current or target role"
+          placeholder="Current or target role (ex: IT manager, support specialist)"
           className="rounded-lg border border-blue-200 px-3 py-2 text-sm bg-white"
         />
         <button
